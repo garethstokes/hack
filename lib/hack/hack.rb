@@ -65,7 +65,8 @@ class Hack
   end
 
   def set_current_branch
-    @current ||= `git branch | grep "*" | awk '{print $2}'`.strip
+		@current ||= `git status | grep "On branch" | awk "{print $4}"`.strip
+    #@current ||= `git branch | grep "*" | awk '{print $2}'`.strip
   end
 
   def create_branch(branch)
